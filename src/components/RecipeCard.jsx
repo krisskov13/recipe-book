@@ -1,9 +1,15 @@
-function RecipeCard({ title, description, imageUrl }) {
+function RecipeCard({ recipes }) {
   return (
     <div>
-      <h2>{title}</h2>
-      <p>{description}</p>
-      <img src={imageUrl} alt={title} />
+      <ul>
+        {recipes.map((recipe) => (
+          <li key={recipe.id}>
+            <h3>{recipe.title}</h3>
+            <p>{recipe.ingredients}</p>
+            <p>{recipe.instructions}</p>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }

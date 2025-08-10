@@ -1,13 +1,27 @@
 import { useState } from "react";
 
-function RecipeForm() {
+function RecipeForm({ onSubmit }) {
   const [title, setTitle] = useState("");
   const [ingredients, setIngredients] = useState("");
   const [instructions, setInstructions] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Новий рецепт:", { title, ingredients, instructions });
+
+    const formData = {
+      id: Date.now(),
+      title,
+      ingredients,
+      instructions,
+    };
+
+    console.log("Новий рецепт:", formData);
+
+    onSubmit(formData);
+
+    setTitle("");
+    setIngredients("");
+    setInstructions("");
   };
 
   return (
