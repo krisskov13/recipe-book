@@ -1,5 +1,12 @@
+import RecipeForm from "../components/RecipeForm";
+
 function AddRecipe() {
-    return <h1>Додати рецепт</h1>
+  return (
+    <div>
+      <h1>Новий рецепт</h1>
+      <RecipeForm />
+    </div>
+  );
 }
 
-export default AddRecipe
+export default AddRecipe;
