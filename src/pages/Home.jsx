@@ -7,7 +7,7 @@ function Home({ recipes }) {
       {recipes.length === 0 ? (
         <p>Рецептів ще немає</p>
       ) : (
-        <RecipeCard recipes={recipes} />
+        recipes.map((recipe) => <RecipeCard key={recipe.id} recipe={recipe} />)
       )}
     </div>
   );
