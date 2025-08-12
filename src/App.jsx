@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import AddRecipe from "./pages/AddRecipe";
 import NavBar from "./components/NavBar";
+import RecipeDetail from "./pages/RecipeDetail";
 
 function App() {
   const [recipes, setRecipes] = useState(() => {
@@ -23,6 +24,10 @@ function App() {
       <NavBar />
       <Routes>
         <Route path="/" element={<Home recipes={recipes} />}></Route>
+        <Route
+          path="/recipe/:id"
+          element={<RecipeDetail recipes={recipes} />}
+        ></Route>
         <Route
           path="/add"
           element={<AddRecipe onAddRecipe={addRecipe} />}
