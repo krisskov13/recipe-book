@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 
-function RecipeDetail(recipes) {
-  const { id } = useParams;
+function RecipeDetail({ recipes }) {
+  const { id } = useParams();
 
   const recipe = recipes.find((r) => r.id === Number(id));
 
@@ -11,9 +11,11 @@ function RecipeDetail(recipes) {
 
   return (
     <div>
-      <h1>Назва</h1>
-      <p>Інгредієнти</p>
-      <p>Інструкції</p>
+      <h1>{recipe.title}</h1>
+      <h3>Інгредієнти:</h3>
+      <p>{recipe.ingredients}</p>
+      <h3>Інструкції:</h3>
+      <p>{recipe.instructions}</p>
     </div>
   );
 }
