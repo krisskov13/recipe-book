@@ -1,4 +1,5 @@
 import { useState } from "react";
+import styles from "./RecipeForm.module.css";
 
 function RecipeForm({ onSubmit }) {
   const [title, setTitle] = useState("");
@@ -25,9 +26,9 @@ function RecipeForm({ onSubmit }) {
   };
 
   return (
-    <div>
+    <div className={styles.pageContainer}>
       <h1>Додай новий рецепт</h1>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className={styles.formContainer}>
         <label>
           Назва страви:
           <input

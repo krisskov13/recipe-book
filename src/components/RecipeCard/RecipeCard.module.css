@@ -1,0 +1,38 @@
+.cardLink {
+  text-decoration: none;
+  color: inherit;
+}
+
+.card {
+  width: 500px;
+  height: 230px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  margin: 12px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.card h3 {
+  font-size: 22px;
+  margin: 10px 0 15px;
+}
+
+.card p {
+  font-size: 15px;
+  color: #666;
+}
+
+.information {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 105px;
+}

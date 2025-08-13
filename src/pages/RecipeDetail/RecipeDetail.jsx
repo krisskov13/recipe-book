@@ -1,16 +1,17 @@
 import { useParams } from "react-router-dom";
+import styles from "./RecipeDetail.module.css";
 
 function RecipeDetail({ recipes }) {
   const { id } = useParams();
 
-  const recipe = recipes.find((r) => r.id === Number(id));
+  const recipe = recipes.find((r) => String(r.id) === id);
 
   if (!recipe) {
-    return <p>Рецепт не знайдено</p>;
+    return <p className={styles.notFound}>Рецепт не знайдено</p>;
   }
 
   return (
-    <div>
+    <div className={styles.detail}>
       <h1>{recipe.title}</h1>
       <h3>Інгредієнти:</h3>
       <p>{recipe.ingredients}</p>
