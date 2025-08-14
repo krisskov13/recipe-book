@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import styles from "./EditRecipe.module.css";
 
 function EditRecipe({ recipes, onUpdate }) {
   const { id } = useParams();
@@ -38,9 +39,9 @@ function EditRecipe({ recipes, onUpdate }) {
   }
 
   return (
-    <div>
+    <div className={styles.pageContainer}>
       <h2>Редагувати рецепт</h2>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className={styles.formContainer}>
         <label>
           Назва страви:
           <input

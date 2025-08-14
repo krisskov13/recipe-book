@@ -5,7 +5,7 @@ import AddRecipe from "./pages/AddRecipe";
 import NavBar from "./components/NavBar/NavBar";
 import RecipeDetail from "./pages/RecipeDetail/RecipeDetail";
 import recipesData from "./recipes.json";
-import EditRecipe from "./pages/EditRecipe";
+import EditRecipe from "./pages/EditRecipe/EditRecipe";
 
 function App() {
   const [recipes, setRecipes] = useState(() => {
