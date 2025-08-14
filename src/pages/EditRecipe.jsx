@@ -1,23 +1,75 @@
-function EditRecipe() {
+import { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+
+function EditRecipe({ recipes, onUpdate }) {
+  const { id } = useParams();
+  const navigate = useNavigate();
+
+  const recipe = recipes.find((r) => String(r.id) === id);
+
+  const [title, setTitle] = useState("");
+  const [ingredients, setIngredients] = useState("");
+  const [instructions, setInstructions] = useState("");
+
+  useEffect(() => {
+    if (recipe) {
+      setTitle(recipe.title);
+      setIngredients(recipe.ingredients);
+      setInstructions(recipe.instructions);
+    }
+  }, [recipe]);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const updatedRecipe = {
+      ...recipe,
+      title,
+      ingredients,
+      instructions,
+    };
+
+    onUpdate(updatedRecipe);
+    navigate(`/recipe/${id}`);
+  };
+
+  if (!recipe) {
+    return <p>Рецепт не знайдено</p>;
+  }
+
   return (
     <div>
-      <form>
+      <h2>Редагувати рецепт</h2>
+      <form onSubmit={handleSubmit}>
         <label>
           Назва страви:
-          <input type="text" required />
+          <input
+            type="text"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            required
+          />
         </label>
 
         <label>
           Інгредієнти:
-          <textarea required />
+          <textarea
+            value={ingredients}
+            onChange={(e) => setIngredients(e.target.value)}
+            required
+          />
         </label>
 
         <label>
           Інструкції:
-          <textarea required />
+          <textarea
+            value={instructions}
+            onChange={(e) => setInstructions(e.target.value)}
+            required
+          />
         </label>
 
-        <button type="submit">Зберегти відредагований рецепт</button>
+        <button type="submit">Зберегти зміни</button>
       </form>
     </div>
   );

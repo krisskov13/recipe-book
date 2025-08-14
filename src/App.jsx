@@ -5,6 +5,7 @@ import AddRecipe from "./pages/AddRecipe";
 import NavBar from "./components/NavBar/NavBar";
 import RecipeDetail from "./pages/RecipeDetail/RecipeDetail";
 import recipesData from "./recipes.json";
+import EditRecipe from "./pages/EditRecipe";
 
 function App() {
   const [recipes, setRecipes] = useState(() => {
@@ -25,6 +26,12 @@ function App() {
     localStorage.setItem("recipes", JSON.stringify(userRecipes));
   }, [recipes]);
 
+  const handleUpdate = (updatedRecipe) => {
+    setRecipes(
+      recipes.map((r) => (r.id === updatedRecipe.id ? updatedRecipe : r))
+    );
+  };
+
   return (
     <>
       <NavBar />
@@ -37,6 +44,10 @@ function App() {
         <Route
           path="/add"
           element={<AddRecipe onAddRecipe={addRecipe} />}
+        ></Route>
+        <Route
+          path="/edit/:id"
+          element={<EditRecipe recipes={recipes} onUpdate={handleUpdate} />}
         ></Route>
       </Routes>
     </>
