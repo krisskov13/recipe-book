@@ -5,14 +5,25 @@ import styles from "./Home.module.css";
 function Home({ recipes }) {
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredRecipes, setFilteredRecipes] = useState(recipes);
+  const [debouncedTerm, setDebouncedTerm] = useState(searchTerm);
 
   useEffect(() => {
-    const term = searchTerm.toLowerCase();
+    const handler = setTimeout(() => {
+      setDebouncedTerm(searchTerm);
+    }, 300);
+
+    return () => {
+      clearTimeout(handler);
+    };
+  }, [searchTerm]);
+
+  useEffect(() => {
+    const term = debouncedTerm.toLowerCase();
     const filtered = recipes.filter((recipe) =>
       recipe.title.toLowerCase().includes(term)
     );
     setFilteredRecipes(filtered);
-  }, [searchTerm, recipes]);
+  }, [debouncedTerm, recipes]);
 
   const handleClear = () => {
     setSearchTerm("");
