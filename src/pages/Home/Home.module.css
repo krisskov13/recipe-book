@@ -4,6 +4,43 @@
   padding: 20px;
 }
 
+.searchBar {
+  display: flex;
+  align-items: center;
+  max-width: 500px;
+  margin: 20px auto;
+  gap: 8px;
+}
+
+.searchBar input {
+  flex: 1;
+  padding: 10px 15px;
+  border-radius: 25px;
+  border: 1px solid #ddd;
+  font-size: 16px;
+  outline: none;
+  transition: box-shadow 0.3s ease;
+}
+
+.searchBar input:focus {
+  box-shadow: 0 0 3px rgba(87, 36, 22, 0.5);
+  border-color: #6c1900;
+}
+
+.searchBar button {
+  border: none;
+  padding: 10px 16px;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  background-color: #eee;
+  color: #333;
+}
+
+.searchBar button:hover {
+  background-color: #ddd;
+}
+
 .listRecipes {
   display: flex;
   flex-wrap: wrap;

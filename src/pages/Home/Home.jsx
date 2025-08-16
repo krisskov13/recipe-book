@@ -32,13 +32,15 @@ function Home({ recipes }) {
   return (
     <div className={styles.container}>
       <h2>Рецепти</h2>
-      <input
-        type="text"
-        value={searchTerm}
-        placeholder="Знайди рецепт за назвою"
-        onChange={(e) => setSearchTerm(e.target.value)}
-      />
-      <button onClick={handleClear}>Очистити</button>
+      <div className={styles.searchBar}>
+        <input
+          type="text"
+          value={searchTerm}
+          placeholder="Знайти рецепт..."
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
+        <button onClick={handleClear}>✖ Очистити</button>
+      </div>
       {filteredRecipes.length > 0 ? (
         <div className={styles.listRecipes}>
           {filteredRecipes.map((recipe) => (
