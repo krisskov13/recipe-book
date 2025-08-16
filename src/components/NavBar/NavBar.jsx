@@ -3,13 +3,15 @@ import styles from "./NavBar.module.css";
 
 function NavBar() {
   return (
-    <nav className={styles.nav}>
-      <div className={styles.logo}>🍽 My Recipes</div>
-      <div className={styles.links}>
-        <Link to="/">Головна сторінка</Link>
-        <Link to="/add">Додати рецепт</Link>
-      </div>
-    </nav>
+    <header className={styles.header}>
+      <h1 className={styles.logo}>🍽 Книга рецептів</h1>
+      <nav>
+        <div className={styles.links}>
+          <Link to="/">Головна сторінка</Link>
+          <Link to="/add">Додати рецепт</Link>
+        </div>
+      </nav>
+    </header>
   );
 }
 

@@ -1,19 +1,25 @@
-.nav {
+.header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 40px;
-  background-color: #593024;
+  padding: 40px 50px;
+  background: linear-gradient(90deg, #673a24, #e18f51cb);
   color: white;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
 }
 
 .logo {
-  font-size: 25px;
-  font-weight: bold;
+  font-size: 30px;
+  font-family: "Segoe UI", sans-serif;
 }
 
 .links a {
   margin-left: 20px;
   text-decoration: none;
   color: white;
+  transition: color 0.3s ease;
+}
+
+.links a:hover {
+  color: #4a2f1b;
 }

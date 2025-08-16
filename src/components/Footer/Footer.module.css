@@ -1,0 +1,34 @@
+.footer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #f8f8f8;
+  padding: 40px 50px; /* збільшений padding = вищий футер */
+  font-size: 16px;
+  color: #333;
+  border-top: 1px solid #ddd;
+}
+
+.title {
+  font-size: 18px;
+  color: black;
+}
+
+.contacts {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contacts a {
+  text-decoration: none;
+  color: #333;
+}
+
+.contacts a:hover {
+  color: #c1744e;
+}
+
+.copy p {
+  font-size: 14px;
+}

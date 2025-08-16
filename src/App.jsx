@@ -6,6 +6,7 @@ import NavBar from "./components/NavBar/NavBar";
 import RecipeDetail from "./pages/RecipeDetail/RecipeDetail";
 import recipesData from "./recipes.json";
 import EditRecipe from "./pages/EditRecipe/EditRecipe";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   const [recipes, setRecipes] = useState([]);
@@ -59,6 +60,7 @@ function App() {
           element={<EditRecipe recipes={recipes} onUpdate={handleUpdate} />}
         ></Route>
       </Routes>
+      <Footer />
     </>
   );
 }

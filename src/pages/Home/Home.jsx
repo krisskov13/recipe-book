@@ -31,7 +31,7 @@ function Home({ recipes }) {
 
   return (
     <div className={styles.container}>
-      <h1>Рецепти</h1>
+      <h2>Рецепти</h2>
       <input
         type="text"
         value={searchTerm}
