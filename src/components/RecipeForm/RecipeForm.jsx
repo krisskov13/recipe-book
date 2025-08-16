@@ -1,7 +1,9 @@
 import { useState } from "react";
 import styles from "./RecipeForm.module.css";
+import { useNavigate } from "react-router-dom";
 
 function RecipeForm({ onSubmit }) {
+  const navigate = useNavigate();
   const [title, setTitle] = useState("");
   const [ingredients, setIngredients] = useState("");
   const [instructions, setInstructions] = useState("");
@@ -19,10 +21,7 @@ function RecipeForm({ onSubmit }) {
     console.log("Новий рецепт:", formData);
 
     onSubmit(formData);
-
-    setTitle("");
-    setIngredients("");
-    setInstructions("");
+    navigate("/");
   };
 
   return (
@@ -53,6 +52,7 @@ function RecipeForm({ onSubmit }) {
           <textarea
             value={instructions}
             onChange={(e) => setInstructions(e.target.value)}
+            required
           />
         </label>
 
