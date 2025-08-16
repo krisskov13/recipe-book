@@ -14,6 +14,10 @@ function Home({ recipes }) {
     setFilteredRecipes(filtered);
   }, [searchTerm, recipes]);
 
+  const handleClear = () => {
+    setSearchTerm("");
+  };
+
   return (
     <div className={styles.container}>
       <h1>Рецепти</h1>
@@ -23,6 +27,7 @@ function Home({ recipes }) {
         placeholder="Знайди рецепт за назвою"
         onChange={(e) => setSearchTerm(e.target.value)}
       />
+      <button onClick={handleClear}>Очистити</button>
       {filteredRecipes.length > 0 ? (
         <div className={styles.listRecipes}>
           {filteredRecipes.map((recipe) => (
