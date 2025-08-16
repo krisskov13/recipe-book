@@ -1,5 +1,4 @@
 import RecipeCard from "../../components/RecipeCard/RecipeCard";
-import recipesData from "../../recipes.json";
 import styles from "./Home.module.css";
 
 function Home({ recipes }) {
@@ -10,7 +9,7 @@ function Home({ recipes }) {
         <p>Рецептів ще немає</p>
       ) : (
         <div className={styles.listRecipes}>
-          {recipesData.map((recipe) => (
+          {recipes.map((recipe) => (
             <RecipeCard key={recipe.id} recipe={recipe} />
           ))}
         </div>

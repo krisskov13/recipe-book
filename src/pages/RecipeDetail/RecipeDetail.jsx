@@ -1,7 +1,7 @@
 import { useNavigate, useParams } from "react-router-dom";
 import styles from "./RecipeDetail.module.css";
 
-function RecipeDetail({ recipes }) {
+function RecipeDetail({ recipes, handleDelete }) {
   const { id } = useParams();
   const navigate = useNavigate();
 
@@ -11,6 +11,11 @@ function RecipeDetail({ recipes }) {
     return <p className={styles.notFound}>Рецепт не знайдено</p>;
   }
 
+  const onDelete = () => {
+    handleDelete(recipe.id);
+    navigate("/");
+  };
+
   return (
     <div className={styles.detail}>
       <h1>{recipe.title}</h1>
@@ -19,6 +24,7 @@ function RecipeDetail({ recipes }) {
       <h3>Інструкції:</h3>
       <p>{recipe.instructions}</p>
       <button onClick={() => navigate(`/edit/${id}`)}>Редагувати</button>
+      <button onClick={onDelete}>Видалити</button>
     </div>
   );
 }

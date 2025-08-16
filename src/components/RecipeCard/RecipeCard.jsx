@@ -9,7 +9,6 @@ function RecipeCard({ recipe }) {
         <div className={styles.information}>
           <p>{recipe.ingredients}</p>
           <p>{recipe.instructions}</p>
-          {/* <img src={recipe.image} alt={recipe.title}></img> */}
         </div>
       </div>
     </Link>

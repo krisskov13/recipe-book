@@ -8,28 +8,35 @@ import recipesData from "./recipes.json";
 import EditRecipe from "./pages/EditRecipe/EditRecipe";
 
 function App() {
-  const [recipes, setRecipes] = useState(() => {
+  const [recipes, setRecipes] = useState([]);
+
+  useEffect(() => {
     const saved = localStorage.getItem("recipes");
-    const savedRecipes = saved ? JSON.parse(saved) : [];
-    return [...recipesData, ...savedRecipes];
-  });
+
+    if (saved) {
+      const parsed = JSON.parse(saved);
+      if (parsed.length > 0) {
+        setRecipes(parsed);
+        return;
+      }
+    }
+
+    localStorage.setItem("recipes", JSON.stringify(recipesData));
+    setRecipes(recipesData);
+  }, []);
 
   const addRecipe = (newRecipe) => {
     setRecipes((prev) => [...prev, newRecipe]);
   };
 
-  useEffect(() => {
-    const userRecipes = recipes.filter(
-      (r) =>
-        !recipesData.some((defaultR) => String(defaultR.id) === String(r.id))
-    );
-    localStorage.setItem("recipes", JSON.stringify(userRecipes));
-  }, [recipes]);
-
   const handleUpdate = (updatedRecipe) => {
     setRecipes(
       recipes.map((r) => (r.id === updatedRecipe.id ? updatedRecipe : r))
     );
+  };
+
+  const handleDelete = (id) => {
+    setRecipes((prev) => prev.filter((recipe) => recipe.id !== id));
   };
 
   return (
@@ -39,7 +46,9 @@ function App() {
         <Route path="/" element={<Home recipes={recipes} />}></Route>
         <Route
           path="/recipe/:id"
-          element={<RecipeDetail recipes={recipes} />}
+          element={
+            <RecipeDetail recipes={recipes} handleDelete={handleDelete} />
+          }
         ></Route>
         <Route
           path="/add"
