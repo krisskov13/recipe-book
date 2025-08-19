@@ -18,19 +18,28 @@ function RecipeDetail({ recipes, handleDelete }) {
 
   return (
     <div className={styles.detail}>
-      <h1>{recipe.title}</h1>
-      <h3>Інгредієнти:</h3>
-      <p>{recipe.ingredients}</p>
-      <h3>Інструкції:</h3>
-      <p>{recipe.instructions}</p>
-      <div className={styles.category}>
+      <div className={styles.containerTitle}>
+        <h1>{recipe.title}</h1>
         <span className={`${styles.badge} ${styles[recipe.category]}`}>
           {recipe.category}
         </span>
       </div>
+      <h3>Інгредієнти:</h3>
+      <p>{recipe.ingredients}</p>
+      <h3>Інструкції:</h3>
+      <p>{recipe.instructions}</p>
 
-      <button onClick={() => navigate(`/edit/${id}`)}>Редагувати</button>
-      <button onClick={onDelete}>Видалити</button>
+      <div className={styles.buttons}>
+        <button
+          className={styles.editBtn}
+          onClick={() => navigate(`/edit/${id}`)}
+        >
+          Редагувати
+        </button>
+        <button className={styles.deleteBtn} onClick={onDelete}>
+          Видалити
+        </button>
+      </div>
     </div>
   );
 }

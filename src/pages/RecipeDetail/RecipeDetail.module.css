@@ -1,33 +1,33 @@
 .detail {
   max-width: 800px;
-  margin: auto;
+  margin: 50px auto;
   background: white;
-  padding: 30px;
+  padding: 40px;
   border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-.detail h1 {
-  margin-bottom: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .detail h3 {
-  margin-top: 15px;
+  margin: 20px 0 8px;
 }
 
 .notFound {
   text-align: center;
   margin-top: 50px;
-  font-size: 1.2rem;
+}
+
+.containerTitle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
 }
 
 .badge {
-  display: inline-block;
   padding: 6px 12px;
   border-radius: 20px;
   font-size: 14px;
   color: #fff;
-  margin-top: 10px;
 }
 
 .Сніданок {
@@ -44,4 +44,39 @@
 
 .Десерт {
   background-color: #9b59b6;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 40px;
+}
+
+.editBtn {
+  background-color: #fff;
+  color: #103711;
+  border: 2px solid #75a677;
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.editBtn:hover {
+  background-color: #75a677;
+  color: #fff;
+}
+
+.deleteBtn {
+  background-color: #fff;
+  color: #581010;
+  border: 2px solid #ad3333;
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.deleteBtn:hover {
+  background-color: #ad3333;
+  color: #fff;
 }
