@@ -11,12 +11,14 @@ function EditRecipe({ recipes, onUpdate }) {
   const [title, setTitle] = useState("");
   const [ingredients, setIngredients] = useState("");
   const [instructions, setInstructions] = useState("");
+  const [category, setCategory] = useState("");
 
   useEffect(() => {
     if (recipe) {
       setTitle(recipe.title);
       setIngredients(recipe.ingredients);
       setInstructions(recipe.instructions);
+      setCategory(recipe.category);
     }
   }, [recipe]);
 
@@ -28,6 +30,7 @@ function EditRecipe({ recipes, onUpdate }) {
       title,
       ingredients,
       instructions,
+      category,
     };
 
     onUpdate(updatedRecipe);
@@ -68,6 +71,18 @@ function EditRecipe({ recipes, onUpdate }) {
             onChange={(e) => setInstructions(e.target.value)}
             required
           />
+        </label>
+
+        <label>
+          <select
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
+          >
+            <option value="Сніданок">Сніданок</option>
+            <option value="Обід">Обід</option>
+            <option value="Вечеря">Вечеря</option>
+            <option value="Десерт">Десерт</option>
+          </select>
         </label>
 
         <button type="submit">Зберегти зміни</button>
