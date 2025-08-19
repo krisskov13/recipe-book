@@ -50,6 +50,22 @@
   outline: none;
 }
 
+.formContainer select {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  background-color: #fff;
+  transition: border 0.2s, box-shadow 0.2s;
+  margin-top: 5px;
+}
+
+.formContainer select:focus {
+  outline: none;
+  border-color: #0d91e9;
+}
+
 .formContainer button {
   padding: 12px;
   background-color: #ff6b6b;
