@@ -4,27 +4,27 @@
     "title": "Avocado Toast Deluxe",
     "ingredients": "2 slices of sourdough bread, 1 ripe avocado, salt, pepper, chili flakes, olive oil",
     "instructions": "Toast the bread until golden. Mash avocado with salt, pepper, and a drizzle of olive oil. Spread on toast, sprinkle chili flakes, and serve.",
-    "image": "https://images.unsplash.com/photo-1559628233-8dab0b75de92?w=800"
+    "category": "Сніданок"
   },
   {
     "id": "2",
     "title": "Berry Smoothie Bowl",
     "ingredients": "1 banana, 1 cup frozen berries, 1/2 cup yogurt, granola, honey",
     "instructions": "Blend banana, berries, and yogurt until smooth. Pour into a bowl, top with granola, fresh berries, and a drizzle of honey.",
-    "image": "https://images.unsplash.com/photo-1572441710534-680b8b1d59d6?w=800"
+    "category": "Сніданок"
   },
   {
     "id": "3",
     "title": "Mediterranean Chickpea Salad",
     "ingredients": "1 can chickpeas, cherry tomatoes, cucumber, red onion, feta, olive oil, lemon juice",
     "instructions": "Mix chickpeas, chopped vegetables, and feta. Dress with olive oil and lemon juice. Season with salt and pepper.",
-    "image": "https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=800"
+    "category": "Обід"
   },
   {
     "id": "4",
     "title": "Classic Margherita Pizza",
     "ingredients": "Pizza dough, tomato sauce, fresh mozzarella, basil leaves, olive oil",
     "instructions": "Spread tomato sauce on dough, add mozzarella, and bake at 250°C for 7-10 minutes. Top with fresh basil and olive oil.",
-    "image": "https://images.unsplash.com/photo-1601924579532-03a7b1a4a92d?w=800"
+    "category": "Вечеря"
   }
 ]

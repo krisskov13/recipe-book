@@ -7,6 +7,7 @@ function RecipeForm({ onSubmit }) {
   const [title, setTitle] = useState("");
   const [ingredients, setIngredients] = useState("");
   const [instructions, setInstructions] = useState("");
+  const [category, setCategory] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -16,6 +17,7 @@ function RecipeForm({ onSubmit }) {
       title,
       ingredients,
       instructions,
+      category,
     };
 
     console.log("Новий рецепт:", formData);
@@ -56,6 +58,20 @@ function RecipeForm({ onSubmit }) {
           />
         </label>
 
+        <label>
+          <select
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
+          >
+            <option value="" disabled>
+              Оберіть категорію
+            </option>
+            <option value="Сніданок">Сніданок</option>
+            <option value="Обід">Обід</option>
+            <option value="Вечеря">Вечеря</option>
+            <option value="Десерт">Десерт</option>
+          </select>
+        </label>
         <button type="submit">Зберегти рецепт</button>
       </form>
     </div>

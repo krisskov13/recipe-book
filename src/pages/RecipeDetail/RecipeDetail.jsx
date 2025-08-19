@@ -23,6 +23,12 @@ function RecipeDetail({ recipes, handleDelete }) {
       <p>{recipe.ingredients}</p>
       <h3>Інструкції:</h3>
       <p>{recipe.instructions}</p>
+      <div className={styles.category}>
+        <span className={`${styles.badge} ${styles[recipe.category]}`}>
+          {recipe.category}
+        </span>
+      </div>
+
       <button onClick={() => navigate(`/edit/${id}`)}>Редагувати</button>
       <button onClick={onDelete}>Видалити</button>
     </div>

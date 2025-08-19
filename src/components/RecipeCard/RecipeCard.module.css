@@ -36,3 +36,28 @@
   justify-content: space-between;
   height: 105px;
 }
+
+.badge {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 14px;
+  color: #fff;
+  margin-top: 10px;
+}
+
+.Сніданок {
+  background-color: #f39c12;
+}
+
+.Обід {
+  background-color: #27ae60;
+}
+
+.Вечеря {
+  background-color: #2980b9;
+}
+
+.Десерт {
+  background-color: #9b59b6;
+}
