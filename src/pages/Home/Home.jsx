@@ -6,6 +6,9 @@ function Home({ recipes }) {
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredRecipes, setFilteredRecipes] = useState(recipes);
   const [debouncedTerm, setDebouncedTerm] = useState(searchTerm);
+  const [selectedCategory, setSelectedCategory] = useState("Усі");
+
+  const categories = ["Усі", ...new Set(recipes.map((r) => r.category))];
 
   useEffect(() => {
     const handler = setTimeout(() => {
@@ -19,11 +22,19 @@ function Home({ recipes }) {
 
   useEffect(() => {
     const term = debouncedTerm.toLowerCase();
-    const filtered = recipes.filter((recipe) =>
+
+    let filtered = recipes.filter((recipe) =>
       recipe.title.toLowerCase().includes(term)
     );
+
+    if (selectedCategory !== "Усі") {
+      filtered = filtered.filter(
+        (recipe) => recipe.category === selectedCategory
+      );
+    }
+
     setFilteredRecipes(filtered);
-  }, [debouncedTerm, recipes]);
+  }, [debouncedTerm, recipes, selectedCategory]);
 
   const handleClear = () => {
     setSearchTerm("");
@@ -40,6 +51,13 @@ function Home({ recipes }) {
           onChange={(e) => setSearchTerm(e.target.value)}
         />
         <button onClick={handleClear}>✖ Очистити</button>
+      </div>
+      <div>
+        {categories.map((category) => (
+          <button key={category} onClick={() => setSelectedCategory(category)}>
+            {category}
+          </button>
+        ))}
       </div>
       {filteredRecipes.length > 0 ? (
         <div className={styles.listRecipes}>
