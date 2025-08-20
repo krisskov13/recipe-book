@@ -41,6 +41,35 @@
   background-color: #ddd;
 }
 
+.containerFilter {
+  display: flex;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.filterBtn {
+  padding: 6px 14px;
+  border: 1px solid #ccc;
+  background-color: white;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.filterBtn:hover {
+  background-color: #f5f5f5;
+}
+
+.active {
+  background-color: #f3d911;
+  color: black;
+  border: none;
+}
+
+.active:hover {
+  background-color: #f3d911;
+}
+
 .listRecipes {
   display: flex;
   flex-wrap: wrap;

@@ -52,9 +52,15 @@ function Home({ recipes }) {
         />
         <button onClick={handleClear}>✖ Очистити</button>
       </div>
-      <div>
+      <div className={styles.containerFilter}>
         {categories.map((category) => (
-          <button key={category} onClick={() => setSelectedCategory(category)}>
+          <button
+            key={category}
+            className={`${styles.filterBtn} ${
+              selectedCategory === category ? styles.active : ""
+            }`}
+            onClick={() => setSelectedCategory(category)}
+          >
             {category}
           </button>
         ))}
