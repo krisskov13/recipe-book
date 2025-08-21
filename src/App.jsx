@@ -7,6 +7,9 @@ import RecipeDetail from "./pages/RecipeDetail/RecipeDetail";
 import recipesData from "./recipes.json";
 import EditRecipe from "./pages/EditRecipe/EditRecipe";
 import Footer from "./components/Footer/Footer";
+import Auth from "./components/context/Auth";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
 
 function App() {
   const [recipes, setRecipes] = useState([]);
@@ -41,7 +44,7 @@ function App() {
   };
 
   return (
-    <>
+    <Auth>
       <NavBar />
       <Routes>
         <Route path="/" element={<Home recipes={recipes} />}></Route>
@@ -59,9 +62,11 @@ function App() {
           path="/edit/:id"
           element={<EditRecipe recipes={recipes} onUpdate={handleUpdate} />}
         ></Route>
+        <Route path="/register" element={<Register />}></Route>
+        <Route path="/login" element={<Login />}></Route>
       </Routes>
       <Footer />
-    </>
+    </Auth>
   );
 }
 

@@ -2,7 +2,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 
 const AuthContext = createContext();
 
-function Auth() {
+function Auth({ children }) {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
@@ -47,9 +47,9 @@ function Auth() {
   };
 
   return (
-    <Auth.Provider value={{ user, register, login, logout }}>
+    <AuthContext.Provider value={{ user, register, login, logout }}>
       {children}
-    </Auth.Provider>
+    </AuthContext.Provider>
   );
 }
 
