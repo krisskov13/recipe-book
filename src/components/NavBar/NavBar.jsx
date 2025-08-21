@@ -9,16 +9,18 @@ function NavBar() {
     <header className={styles.header}>
       <h1 className={styles.logo}>🍽 Книга рецептів</h1>
       <nav>
-        <div className={styles.links}>
-          {user && <Link to="/add">Додати рецепт</Link>}
-        </div>
         <div>
           {user ? (
-            <button onClick={logout}>Вийти</button>
+            <div className={`${styles.links} ${styles.containerNav}`}>
+              <Link to="/add">Додати рецепт</Link>
+              <button onClick={logout} className={styles.bntLogout}>
+                Вийти
+              </button>
+            </div>
           ) : (
-            <div>
+            <div className={`${styles.links} ${styles.containerNav}`}>
               <Link to="/login">Вхід</Link>
-              <Link to="./register">Реєстрація</Link>
+              <Link to="/register">Реєстрація</Link>
             </div>
           )}
         </div>
