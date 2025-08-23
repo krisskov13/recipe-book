@@ -4,11 +4,14 @@ import styles from "./Home.module.css";
 
 function Home({ recipes }) {
   const [searchTerm, setSearchTerm] = useState("");
-  const [filteredRecipes, setFilteredRecipes] = useState(recipes);
+  const [filteredRecipes, setFilteredRecipes] = useState([]);
   const [debouncedTerm, setDebouncedTerm] = useState(searchTerm);
   const [selectedCategory, setSelectedCategory] = useState("Усі");
 
-  const categories = ["Усі", ...new Set(recipes.map((r) => r.category))];
+  const categories = [
+    "Усі",
+    ...Array.from(new Set(recipes.map((r) => r.category))),
+  ];
 
   useEffect(() => {
     const handler = setTimeout(() => {
@@ -43,6 +46,7 @@ function Home({ recipes }) {
   return (
     <div className={styles.container}>
       <h2>Рецепти</h2>
+
       <div className={styles.searchBar}>
         <input
           type="text"
@@ -52,8 +56,9 @@ function Home({ recipes }) {
         />
         <button onClick={handleClear}>✖ Очистити</button>
       </div>
+
       <div className={styles.containerFilter}>
-        {categories.map((category) => (
+        {categories.map((category, index) => (
           <button
             key={category}
             className={`${styles.filterBtn} ${
@@ -65,6 +70,7 @@ function Home({ recipes }) {
           </button>
         ))}
       </div>
+
       {filteredRecipes.length > 0 ? (
         <div className={styles.listRecipes}>
           {filteredRecipes.map((recipe) => (

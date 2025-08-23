@@ -16,18 +16,19 @@ function App() {
 
   useEffect(() => {
     const saved = localStorage.getItem("recipes");
-
     if (saved) {
-      const parsed = JSON.parse(saved);
-      if (parsed.length > 0) {
-        setRecipes(parsed);
-        return;
-      }
+      setRecipes(JSON.parse(saved));
+    } else {
+      setRecipes(recipesData);
+      localStorage.setItem("recipes", JSON.stringify(recipesData));
     }
-
-    localStorage.setItem("recipes", JSON.stringify(recipesData));
-    setRecipes(recipesData);
   }, []);
+
+  useEffect(() => {
+    if (recipes.length > 0) {
+      localStorage.setItem("recipes", JSON.stringify(recipes));
+    }
+  }, [recipes]);
 
   const addRecipe = (newRecipe) => {
     setRecipes((prev) => [...prev, newRecipe]);

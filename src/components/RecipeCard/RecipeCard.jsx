@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import styles from "./RecipeCard.module.css";
 
-function RecipeCard({ recipe, handleDelete }) {
+function RecipeCard({ recipe }) {
   return (
     <Link to={`/recipe/${recipe.id}`} className={styles.cardLink}>
       <div className={styles.card}>

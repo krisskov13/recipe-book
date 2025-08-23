@@ -20,8 +20,8 @@ function Auth({ children }) {
     }
 
     const newUser = { username, password };
-    users.push(newUser);
 
+    users.push(newUser);
     localStorage.setItem("users", JSON.stringify(users));
     localStorage.setItem("user", JSON.stringify(newUser));
     setUser(newUser);
