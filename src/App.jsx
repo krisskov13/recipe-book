@@ -56,6 +56,10 @@ function App() {
           }
         ></Route>
         <Route
+          path="/my-recipes"
+          element={<MyRecipes recipes={recipes} />}
+        ></Route>
+        <Route
           path="/add"
           element={<AddRecipe onAddRecipe={addRecipe} />}
         ></Route>

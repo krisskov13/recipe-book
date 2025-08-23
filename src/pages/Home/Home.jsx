@@ -58,7 +58,7 @@ function Home({ recipes }) {
       </div>
 
       <div className={styles.containerFilter}>
-        {categories.map((category, index) => (
+        {categories.map((category) => (
           <button
             key={category}
             className={`${styles.filterBtn} ${
