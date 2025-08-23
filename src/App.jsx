@@ -8,8 +8,8 @@ import recipesData from "./recipes.json";
 import EditRecipe from "./pages/EditRecipe/EditRecipe";
 import Footer from "./components/Footer/Footer";
 import Auth from "./components/context/Auth";
-import Login from "./pages/login/Login";
-import Register from "./pages/register/Register";
+import Login from "./pages/Login/Login";
+import Register from "./pages/Register/Register";
 
 function App() {
   const [recipes, setRecipes] = useState([]);

@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../components/context/Auth";
 import { useState } from "react";
-import styles from "../register/Register.module.css";
+import styles from "./Register.module.css";
 
 function Register() {
   const { register } = useAuth();
