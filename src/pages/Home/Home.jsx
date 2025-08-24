@@ -1,11 +1,9 @@
-import { useEffect, useState } from "react";
+import { useMemo, useState } from "react";
 import RecipeCard from "../../components/RecipeCard/RecipeCard";
 import styles from "./Home.module.css";
 
 function Home({ recipes }) {
   const [searchTerm, setSearchTerm] = useState("");
-  const [filteredRecipes, setFilteredRecipes] = useState([]);
-  const [debouncedTerm, setDebouncedTerm] = useState(searchTerm);
   const [selectedCategory, setSelectedCategory] = useState("Усі");
 
   const categories = [
@@ -13,34 +11,22 @@ function Home({ recipes }) {
     ...Array.from(new Set(recipes.map((r) => r.category))),
   ];
 
-  useEffect(() => {
-    const handler = setTimeout(() => {
-      setDebouncedTerm(searchTerm);
-    }, 300);
+  const filteredRecipes = useMemo(() => {
+    const term = searchTerm.toLowerCase();
 
-    return () => {
-      clearTimeout(handler);
-    };
-  }, [searchTerm]);
-
-  useEffect(() => {
-    const term = debouncedTerm.toLowerCase();
-
-    let filtered = recipes.filter((recipe) =>
-      recipe.title.toLowerCase().includes(term)
-    );
-
-    if (selectedCategory !== "Усі") {
-      filtered = filtered.filter(
-        (recipe) => recipe.category === selectedCategory
-      );
-    }
-
-    setFilteredRecipes(filtered);
-  }, [debouncedTerm, recipes, selectedCategory]);
+    return recipes.filter((recipe) => {
+      const matchesTerm = recipe.title.toLowerCase().includes(term);
+      const matchesCategory =
+        selectedCategory === "Усі"
+          ? true
+          : recipe.category === selectedCategory;
+      return matchesTerm && matchesCategory;
+    });
+  }, [searchTerm, selectedCategory, recipes]);
 
   const handleClear = () => {
     setSearchTerm("");
+    setSelectedCategory("Усі");
   };
 
   return (
@@ -60,7 +46,7 @@ function Home({ recipes }) {
       <div className={styles.containerFilter}>
         {categories.map((category) => (
           <button
-            key={category}
+            key={`cat-${category}`}
             className={`${styles.filterBtn} ${
               selectedCategory === category ? styles.active : ""
             }`}

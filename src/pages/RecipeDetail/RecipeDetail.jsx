@@ -13,7 +13,7 @@ function RecipeDetail({ recipes, handleDelete }) {
 
   const onDelete = () => {
     handleDelete(recipe.id);
-    navigate("/");
+    navigate("/my-recipes");
   };
 
   return (
@@ -28,18 +28,19 @@ function RecipeDetail({ recipes, handleDelete }) {
       <p>{recipe.ingredients}</p>
       <h3>Інструкції:</h3>
       <p>{recipe.instructions}</p>
-
-      <div className={styles.buttons}>
-        <button
-          className={styles.editBtn}
-          onClick={() => navigate(`/edit/${id}`)}
-        >
-          Редагувати
-        </button>
-        <button className={styles.deleteBtn} onClick={onDelete}>
-          Видалити
-        </button>
-      </div>
+      {recipe.isUserRecipe && (
+        <div className={styles.buttons}>
+          <button
+            className={styles.editBtn}
+            onClick={() => navigate(`/edit/${id}`)}
+          >
+            Редагувати
+          </button>
+          <button className={styles.deleteBtn} onClick={onDelete}>
+            Видалити
+          </button>
+        </div>
+      )}
     </div>
   );
 }

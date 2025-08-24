@@ -23,7 +23,7 @@ function RecipeForm({ onSubmit }) {
     console.log("Новий рецепт:", formData);
 
     onSubmit(formData);
-    navigate("/");
+    navigate("/my-recipes");
   };
 
   return (

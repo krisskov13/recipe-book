@@ -12,6 +12,8 @@ function NavBar() {
         <div>
           {user ? (
             <div className={`${styles.links} ${styles.containerNav}`}>
+              <Link to="/">Усі рецепти</Link>
+              <Link to="/my-recipes">Мої рецепти</Link>
               <Link to="/add">Додати рецепт</Link>
               <button onClick={logout} className={styles.bntLogout}>
                 Вийти

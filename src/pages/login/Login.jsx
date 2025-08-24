@@ -19,7 +19,7 @@ function Login() {
       return;
     }
 
-    login({ username });
+    login({ username, password });
     navigate("/");
   };
 

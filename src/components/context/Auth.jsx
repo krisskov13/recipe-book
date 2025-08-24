@@ -1,8 +1,10 @@
 import { createContext, useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const AuthContext = createContext();
 
 function Auth({ children }) {
+  const navigate = useNavigate();
   const [user, setUser] = useState(null);
 
   useEffect(() => {
@@ -37,13 +39,14 @@ function Auth({ children }) {
       throw new Error("Невірний логін вбо пароль");
     }
 
-    localStorage.setItem("user", JSON.stringify(existingUser));
     setUser(existingUser);
+    localStorage.setItem("user", JSON.stringify(existingUser));
   };
 
   const logout = () => {
     localStorage.removeItem("user");
     setUser(null);
+    navigate("/");
   };
 
   return (

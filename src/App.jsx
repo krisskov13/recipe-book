@@ -10,38 +10,55 @@ import Footer from "./components/Footer/Footer";
 import Auth from "./components/context/Auth";
 import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
+import MyRecipes from "./pages/MyRecipes/MyRecipes";
 
 function App() {
   const [recipes, setRecipes] = useState([]);
 
   useEffect(() => {
     const saved = localStorage.getItem("recipes");
+
     if (saved) {
-      setRecipes(JSON.parse(saved));
-    } else {
-      setRecipes(recipesData);
-      localStorage.setItem("recipes", JSON.stringify(recipesData));
+      const parsed = JSON.parse(saved);
+      if (parsed.length > 0) {
+        setRecipes(parsed);
+        return;
+      }
     }
+
+    const initialRecipes = recipesData.map((r) => ({
+      ...r,
+      isUserRecipe: false,
+    }));
+    setRecipes(initialRecipes);
+    localStorage.setItem("recipes", JSON.stringify(initialRecipes));
   }, []);
 
-  useEffect(() => {
-    if (recipes.length > 0) {
-      localStorage.setItem("recipes", JSON.stringify(recipes));
-    }
-  }, [recipes]);
-
   const addRecipe = (newRecipe) => {
-    setRecipes((prev) => [...prev, newRecipe]);
+    const recipeWithFlag = { ...newRecipe, isUserRecipe: true };
+    setRecipes((prev) => {
+      const updated = [...prev, recipeWithFlag];
+      localStorage.setItem("recipes", JSON.stringify(updated));
+      return updated;
+    });
   };
 
   const handleUpdate = (updatedRecipe) => {
-    setRecipes(
-      recipes.map((r) => (r.id === updatedRecipe.id ? updatedRecipe : r))
-    );
+    setRecipes((prev) => {
+      const updated = prev.map((r) =>
+        r.id === updatedRecipe.id && r.isUserRecipe ? updatedRecipe : r
+      );
+      localStorage.setItem("recipes", JSON.stringify(updated));
+      return updated;
+    });
   };
 
   const handleDelete = (id) => {
-    setRecipes((prev) => prev.filter((recipe) => recipe.id !== id));
+    setRecipes((prev) => {
+      const updated = prev.filter((r) => r.id !== id || !r.isUserRecipe);
+      localStorage.setItem("recipes", JSON.stringify(updated));
+      return updated;
+    });
   };
 
   return (
