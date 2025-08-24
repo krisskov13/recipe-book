@@ -4,42 +4,51 @@ import { useState } from "react";
 import styles from "./Login.module.css";
 
 function Login() {
-  const { login } = useAuth();
+  const { login, error, setError } = useAuth();
   const navigate = useNavigate();
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setError("");
 
-    if (!username || !password) {
-      setError("Заповніть всі поля");
-      return;
+    const success = login(username, password);
+
+    if (success) {
+      setUsername("");
+      setPassword("");
+      navigate("/");
     }
-
-    login({ username, password });
-    navigate("/");
   };
 
   return (
     <div className={styles.pageContainer}>
       <h2>Вхід</h2>
       <form onSubmit={handleSubmit} className={styles.formContainer}>
-        {error && <p>{error}</p>}
-        <input
-          type="text"
-          placeholder="Ім'я"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
-        <input
-          type="password"
-          placeholder="Пароль"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
+        <label>
+          <input
+            type="text"
+            placeholder="Ім'я"
+            value={username}
+            id="username"
+            onChange={(e) => setUsername(e.target.value)}
+            required
+          />
+        </label>
+        <div className={styles.inputWrapper}>
+          <label>
+            <input
+              type="password"
+              placeholder="Пароль"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+            {error && <p className={styles.error}>{error || "\u00A0"}</p>}
+          </label>
+        </div>
         <button type="submit">Увійти</button>
       </form>
     </div>

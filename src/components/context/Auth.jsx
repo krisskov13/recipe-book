@@ -6,6 +6,7 @@ const AuthContext = createContext();
 function Auth({ children }) {
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
+  const [error, setError] = useState("");
 
   useEffect(() => {
     const savedUser = localStorage.getItem("user");
@@ -18,15 +19,17 @@ function Auth({ children }) {
     const users = JSON.parse(localStorage.getItem("users")) || [];
 
     if (users.find((u) => u.username === username)) {
-      throw new Error("Користувач з таким іменем вже існує");
+      setError("Користувач з таким іменем вже існує");
+      return false;
     }
 
     const newUser = { username, password };
-
     users.push(newUser);
     localStorage.setItem("users", JSON.stringify(users));
     localStorage.setItem("user", JSON.stringify(newUser));
     setUser(newUser);
+    setError("");
+    return true;
   };
 
   const login = (username, password) => {
@@ -36,21 +39,27 @@ function Auth({ children }) {
     );
 
     if (!existingUser) {
-      throw new Error("Невірний логін вбо пароль");
+      setError("Невірний логін або пароль");
+      return false;
     }
 
-    setUser(existingUser);
     localStorage.setItem("user", JSON.stringify(existingUser));
+    setUser(existingUser);
+    setError("");
+    return true;
   };
 
   const logout = () => {
     localStorage.removeItem("user");
     setUser(null);
+    setError("");
     navigate("/");
   };
 
   return (
-    <AuthContext.Provider value={{ user, register, login, logout }}>
+    <AuthContext.Provider
+      value={{ user, register, login, logout, error, setError }}
+    >
       {children}
     </AuthContext.Provider>
   );

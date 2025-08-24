@@ -25,10 +25,27 @@
   flex-direction: column;
 }
 
+.inputWrapper {
+  position: relative;
+  margin-bottom: 45px;
+}
+
+.error {
+  color: red;
+  font-size: 14px;
+  position: absolute;
+  bottom: -1.7em;
+  left: 0;
+  height: 1.2em;
+}
+
+.formContainer label {
+  margin-bottom: 25px;
+}
+
 .formContainer input {
   width: 100%;
   padding: 12px;
-  margin-bottom: 15px;
   border: 1px solid #ccc;
   border-radius: 8px;
   font-size: 15px;
