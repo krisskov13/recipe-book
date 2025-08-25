@@ -1,7 +1,7 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import styles from "./RecipeDetail.module.css";
 
-function RecipeDetail({ recipes, handleDelete }) {
+function RecipeDetail({ recipes, handleDelete, userRecipes }) {
   const { id } = useParams();
   const navigate = useNavigate();
 
@@ -10,6 +10,8 @@ function RecipeDetail({ recipes, handleDelete }) {
   if (!recipe) {
     return <p className={styles.notFound}>Рецепт не знайдено</p>;
   }
+
+  const isUserRecipe = userRecipes.some((r) => r.id === recipe.id);
 
   const onDelete = () => {
     handleDelete(recipe.id);
@@ -28,14 +30,11 @@ function RecipeDetail({ recipes, handleDelete }) {
       <p>{recipe.ingredients}</p>
       <h3>Інструкції:</h3>
       <p>{recipe.instructions}</p>
-      {recipe.isUserRecipe && (
+      {isUserRecipe && (
         <div className={styles.buttons}>
-          <button
-            className={styles.editBtn}
-            onClick={() => navigate(`/edit/${id}`)}
-          >
+          <Link to={`/edit/${recipe.id}`} className={styles.editBtn}>
             Редагувати
-          </button>
+          </Link>
           <button className={styles.deleteBtn} onClick={onDelete}>
             Видалити
           </button>

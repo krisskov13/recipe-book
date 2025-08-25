@@ -7,74 +7,64 @@ import RecipeDetail from "./pages/RecipeDetail/RecipeDetail";
 import recipesData from "./recipes.json";
 import EditRecipe from "./pages/EditRecipe/EditRecipe";
 import Footer from "./components/Footer/Footer";
-import Auth from "./components/context/Auth";
-import Login from "./pages/Login/Login";
+import { useAuth } from "./components/context/Auth";
 import Register from "./pages/Register/Register";
 import MyRecipes from "./pages/MyRecipes/MyRecipes";
+import Login from "./pages/login/Login";
 
 function App() {
-  const [recipes, setRecipes] = useState([]);
+  const { user } = useAuth();
+  const [userRecipes, setUserRecipes] = useState([]);
 
   useEffect(() => {
-    const saved = localStorage.getItem("recipes");
-
-    if (saved) {
-      const parsed = JSON.parse(saved);
-      if (parsed.length > 0) {
-        setRecipes(parsed);
-        return;
-      }
+    if (user) {
+      const savedUserRecipes = localStorage.getItem(`recipes_${user.username}`);
+      setUserRecipes(savedUserRecipes ? JSON.parse(savedUserRecipes) : []);
     }
-
-    const initialRecipes = recipesData.map((r) => ({
-      ...r,
-      isUserRecipe: false,
-    }));
-    setRecipes(initialRecipes);
-    localStorage.setItem("recipes", JSON.stringify(initialRecipes));
-  }, []);
+  }, [user]);
 
   const addRecipe = (newRecipe) => {
+    if (!user) return;
     const recipeWithFlag = { ...newRecipe, isUserRecipe: true };
-    setRecipes((prev) => {
-      const updated = [...prev, recipeWithFlag];
-      localStorage.setItem("recipes", JSON.stringify(updated));
-      return updated;
-    });
+    const updated = [...userRecipes, recipeWithFlag];
+    setUserRecipes(updated);
+    localStorage.setItem(`recipes_${user.username}`, JSON.stringify(updated));
   };
 
   const handleUpdate = (updatedRecipe) => {
-    setRecipes((prev) => {
-      const updated = prev.map((r) =>
-        r.id === updatedRecipe.id && r.isUserRecipe ? updatedRecipe : r
-      );
-      localStorage.setItem("recipes", JSON.stringify(updated));
-      return updated;
-    });
+    if (!user) return;
+    const updated = userRecipes.map((r) =>
+      r.id === updatedRecipe.id ? updatedRecipe : r
+    );
+    setUserRecipes(updated);
+    localStorage.setItem(`recipes_${user.username}`, JSON.stringify(updated));
   };
 
   const handleDelete = (id) => {
-    setRecipes((prev) => {
-      const updated = prev.filter((r) => r.id !== id || !r.isUserRecipe);
-      localStorage.setItem("recipes", JSON.stringify(updated));
-      return updated;
-    });
+    if (!user) return;
+    const updated = userRecipes.filter((r) => r.id !== id);
+    setUserRecipes(updated);
+    localStorage.setItem(`recipes_${user.username}`, JSON.stringify(updated));
   };
 
   return (
-    <Auth>
+    <>
       <NavBar />
       <Routes>
-        <Route path="/" element={<Home recipes={recipes} />}></Route>
+        <Route path="/" element={<Home recipes={recipesData} />}></Route>
         <Route
           path="/recipe/:id"
           element={
-            <RecipeDetail recipes={recipes} handleDelete={handleDelete} />
+            <RecipeDetail
+              recipes={[...recipesData, ...userRecipes]}
+              handleDelete={handleDelete}
+              userRecipes={userRecipes}
+            />
           }
         ></Route>
         <Route
           path="/my-recipes"
-          element={<MyRecipes recipes={recipes} />}
+          element={<MyRecipes recipes={userRecipes} />}
         ></Route>
         <Route
           path="/add"
@@ -82,13 +72,13 @@ function App() {
         ></Route>
         <Route
           path="/edit/:id"
-          element={<EditRecipe recipes={recipes} onUpdate={handleUpdate} />}
+          element={<EditRecipe recipes={userRecipes} onUpdate={handleUpdate} />}
         ></Route>
         <Route path="/register" element={<Register />}></Route>
         <Route path="/login" element={<Login />}></Route>
       </Routes>
       <Footer />
-    </Auth>
+    </>
   );
 }
 

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 const AuthContext = createContext();
 
-function Auth({ children }) {
+function AuthProvider({ children }) {
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
   const [error, setError] = useState("");
@@ -69,4 +69,4 @@ export function useAuth() {
   return useContext(AuthContext);
 }
 
-export default Auth;
+export default AuthProvider;
