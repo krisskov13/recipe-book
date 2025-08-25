@@ -22,7 +22,10 @@ function RecipeDetail({ recipes, handleDelete, userRecipes }) {
     <div className={styles.detail}>
       <div className={styles.containerTitle}>
         <h1>{recipe.title}</h1>
-        <span className={`${styles.badge} ${styles[recipe.category]}`}>
+        <span
+          data-category="Основна страва"
+          className={`${styles.badge} ${styles[recipe.category]}`}
+        >
           {recipe.category}
         </span>
       </div>

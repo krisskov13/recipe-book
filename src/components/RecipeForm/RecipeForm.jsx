@@ -67,8 +67,11 @@ function RecipeForm({ onSubmit }) {
               Оберіть категорію
             </option>
             <option value="Сніданок">Сніданок</option>
-            <option value="Обід">Обід</option>
-            <option value="Вечеря">Вечеря</option>
+            <option value="Основна страва">Основна страва</option>
+            <option value="Суп">Суп</option>
+            <option value="Салат">Салат</option>
+            <option value="Закуска">Закуска</option>
+            <option value="Напій">Напій</option>
             <option value="Десерт">Десерт</option>
           </select>
         </label>

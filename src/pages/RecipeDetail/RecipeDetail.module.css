@@ -34,16 +34,28 @@
   background-color: #f39c12;
 }
 
-.Обід {
-  background-color: #27ae60;
+[data-category="Основна страва"] {
+  background-color: #276fae;
 }
 
-.Вечеря {
-  background-color: #2980b9;
+.Суп {
+  background-color: #e9de13;
+}
+
+.Салат {
+  background-color: #08ff11;
+}
+
+.Закуска {
+  background-color: #7016a1;
+}
+
+.Напій {
+  background-color: #e93636;
 }
 
 .Десерт {
-  background-color: #9b59b6;
+  background-color: #ff7ab4;
 }
 
 .buttons {

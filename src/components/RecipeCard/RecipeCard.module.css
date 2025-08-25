@@ -51,13 +51,25 @@
 }
 
 .Обід {
-  background-color: #27ae60;
+  background-color: #e93636;
 }
 
-.Вечеря {
-  background-color: #2980b9;
+.Суп {
+  background-color: #6f2f11;
+}
+
+.Салат {
+  background-color: #116013;
+}
+
+.Закуска {
+  background-color: #7016a1;
+}
+
+.Напій {
+  background-color: #161084;
 }
 
 .Десерт {
-  background-color: #9b59b6;
+  background-color: #ff7ab4;
 }
