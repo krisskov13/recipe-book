@@ -1,16 +1,25 @@
-.detail {
-  max-width: 800px;
-  margin: 50px auto;
-  background: white;
+.detailContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 50px 0;
+  min-height: 100vh;
+}
+
+.detailCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 800px;
+  height: 400px;
+  margin: 80px auto;
   padding: 40px;
   border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 3px 6px 12px rgba(0, 0, 0, 0.3);
 }
 
-.detail h3 {
-  margin: 20px 0 8px;
+.detailCard h3 {
+  margin-bottom: 8px;
 }
-
 .notFound {
   text-align: center;
   margin-top: 50px;
@@ -21,6 +30,9 @@
   align-items: center;
   justify-content: space-between;
   margin-bottom: 20px;
+  background-color: #ebe8e2;
+  padding: 18px;
+  border-radius: 30px;
 }
 
 .badge {
@@ -34,16 +46,16 @@
   background-color: #f39c12;
 }
 
-[data-category="Основна страва"] {
-  background-color: #276fae;
+.Обід {
+  background-color: #e93636;
 }
 
 .Суп {
-  background-color: #e9de13;
+  background-color: #6f2f11;
 }
 
 .Салат {
-  background-color: #08ff11;
+  background-color: #116013;
 }
 
 .Закуска {
@@ -51,7 +63,7 @@
 }
 
 .Напій {
-  background-color: #e93636;
+  background-color: #161084;
 }
 
 .Десерт {
@@ -67,31 +79,30 @@
 
 .editBtn {
   text-decoration: none;
-  background-color: #fff;
-  color: #103711;
-  border: 2px solid #75a677;
+  background-color: #439747;
+  color: white;
   padding: 10px 15px;
   border-radius: 8px;
+  border: none;
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
 .editBtn:hover {
-  background-color: #75a677;
-  color: #fff;
+  background-color: #076407;
 }
 
 .deleteBtn {
-  background-color: #fff;
-  color: #581010;
-  border: 2px solid #ad3333;
+  background-color: #ad3333;
+  color: white;
   padding: 10px 15px;
   border-radius: 8px;
+  border: none;
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
 .deleteBtn:hover {
-  background-color: #ad3333;
+  background-color: #790909;
   color: #fff;
 }

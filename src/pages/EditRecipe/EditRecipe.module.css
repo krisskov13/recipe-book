@@ -3,26 +3,26 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background-color: #f8f8f8;
-  padding: 20px;
+  padding: 60px;
+  min-height: 100vh;
 }
 
 .pageContainer h2 {
   text-align: center;
-  margin: 25px 0;
+  margin-bottom: 30px;
   color: #333;
-  font-size: 30px;
+  font-size: 25px;
 }
 
 .formContainer {
-  background: #fff;
-  padding: 30px 24px;
-  border-radius: 12px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-  max-width: 500px;
-  width: 100%;
   display: flex;
   flex-direction: column;
+  padding: 40px 30px;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(82, 2, 2, 0.2);
+  max-width: 500px;
+  width: 100%;
+  margin-bottom: 50px;
 }
 
 .formContainer label {
@@ -63,7 +63,7 @@
 
 .formContainer select:focus {
   outline: none;
-  border-color: #0d91e9;
+  border-color: #ff6b6b;
 }
 
 .formContainer button {

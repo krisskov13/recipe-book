@@ -28,7 +28,7 @@ function RecipeForm({ onSubmit }) {
 
   return (
     <div className={styles.pageContainer}>
-      <h1>Додай новий рецепт</h1>
+      <h2>Додай новий рецепт</h2>
       <form onSubmit={handleSubmit} className={styles.formContainer}>
         <label>
           Назва страви:

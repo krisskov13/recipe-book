@@ -31,8 +31,6 @@ function Home({ recipes }) {
 
   return (
     <div className={styles.container}>
-      <h2>Рецепти</h2>
-
       <div className={styles.searchBar}>
         <input
           type="text"
@@ -64,7 +62,7 @@ function Home({ recipes }) {
           ))}
         </div>
       ) : (
-        <p>Рецептів не знайдено</p>
+        <p className={styles.notFound}>Рецептів не знайдено</p>
       )}
     </div>
   );

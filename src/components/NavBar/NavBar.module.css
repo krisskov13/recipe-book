@@ -1,18 +1,26 @@
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 40px 50px;
+.headerBackground {
   background: linear-gradient(90deg, #673a24, #e18f51cb);
-  color: white;
   box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
 }
 
+.header {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 40px 0;
+  color: white;
+}
+
 .logo {
+  text-decoration: none;
+  color: inherit;
   font-size: 30px;
 }
 
 .links a {
+  font-size: 17px;
   text-decoration: none;
   color: white;
   transition: color 0.3s ease;

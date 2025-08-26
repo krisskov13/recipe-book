@@ -4,13 +4,16 @@
 }
 
 .card {
-  width: 500px;
-  height: 230px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 370px;
+  height: 250px;
   background: #fff;
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  padding: 16px;
-  margin: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  padding: 13px;
+  margin: 20px 0;
   transition: transform 0.2s, box-shadow 0.2s;
   cursor: pointer;
 }
@@ -29,12 +32,17 @@
   font-size: 15px;
   color: #666;
 }
+.ingredients {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 
-.information {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 105px;
+.instructions {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .badge {

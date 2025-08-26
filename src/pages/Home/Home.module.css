@@ -1,14 +1,15 @@
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 50px 0;
+  min-height: 100vh;
 }
 
 .searchBar {
   display: flex;
   align-items: center;
   max-width: 500px;
-  margin: 20px auto;
+  margin: 0 auto 40px;
   gap: 8px;
 }
 
@@ -61,17 +62,24 @@
 }
 
 .active {
-  background-color: #f3d911;
+  background-color: #faedc2;
   color: black;
   border: none;
 }
 
 .active:hover {
-  background-color: #f3d911;
+  background-color: #faedc2;
 }
 
 .listRecipes {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: flex-start;
+  gap: 0 45px;
+}
+
+.notFound {
+  text-align: center;
+  font-size: 20px;
+  margin-top: 150px;
 }

@@ -2,8 +2,8 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background-color: #f8f8f8;
-  padding: 40px 50px; /* збільшений padding = вищий футер */
+  background-color: rgba(192, 192, 192, 0.1);
+  padding: 35px 50px;
   font-size: 16px;
   color: #333;
   border-top: 1px solid #ddd;
