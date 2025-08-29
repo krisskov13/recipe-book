@@ -6,10 +6,28 @@
 }
 
 .listRecipes {
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start;
-  gap: 0 45px;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 20px 60px;
+}
+
+@media (max-width: 1050px) {
+  .listRecipes {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .listRecipes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 5px;
+    padding: 20px 20px;
+  }
 }
 
 h2 {
@@ -22,11 +40,18 @@ h2 {
   align-items: center;
   margin-top: 120px;
 }
+
 .notFound {
   text-align: center;
   font-size: 18px;
   margin-bottom: 60px;
   font-weight: 600;
+}
+
+@media (max-width: 480px) {
+  .notFound {
+    font-size: 14px;
+  }
 }
 
 .link {
@@ -45,4 +70,11 @@ h2 {
   background-color: rgb(200, 146, 117);
   transform: translateY(-4px);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+@media (max-width: 480px) {
+  .link {
+    padding: 12px 14px;
+    font-size: 15px;
+  }
 }
