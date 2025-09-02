@@ -23,7 +23,7 @@ function AuthProvider({ children }) {
       return false;
     }
 
-    const newUser = { username, password };
+    const newUser = { id: Date.now(), username, password };
     users.push(newUser);
     localStorage.setItem("users", JSON.stringify(users));
     localStorage.setItem("user", JSON.stringify(newUser));
