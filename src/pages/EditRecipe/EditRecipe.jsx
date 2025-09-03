@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import styles from "./EditRecipe.module.css";
+import { useRecipes } from "../../components/context/Recipe";
 
-function EditRecipe({ recipes, onUpdate }) {
+function EditRecipe() {
   const { id } = useParams();
   const navigate = useNavigate();
+  const { recipes, updateRecipe } = useRecipes();
 
   const recipe = recipes.find((r) => String(r.id) === id);
 
@@ -33,7 +35,7 @@ function EditRecipe({ recipes, onUpdate }) {
       category,
     };
 
-    onUpdate(updatedRecipe);
+    updateRecipe(updatedRecipe);
     navigate(`/recipe/${id}`);
   };
 

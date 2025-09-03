@@ -1,8 +1,11 @@
 import { Link } from "react-router-dom";
 import RecipeCard from "../../components/RecipeCard/RecipeCard";
 import styles from "../MyRecipes/MyRecipes.module.css";
+import { useRecipes } from "../../components/context/Recipe";
 
-function MyRecipes({ recipes }) {
+function MyRecipes() {
+  const { recipes } = useRecipes();
+
   return (
     <div className={styles.container}>
       {recipes.length > 0 ? (

@@ -1,9 +1,11 @@
 import { useState } from "react";
 import styles from "./RecipeForm.module.css";
 import { useNavigate } from "react-router-dom";
+import { useRecipes } from "../context/Recipe";
 
-function RecipeForm({ onSubmit }) {
+function RecipeForm() {
   const navigate = useNavigate();
+  const { addRecipe } = useRecipes();
   const [title, setTitle] = useState("");
   const [ingredients, setIngredients] = useState("");
   const [instructions, setInstructions] = useState("");
@@ -22,7 +24,7 @@ function RecipeForm({ onSubmit }) {
 
     console.log("Новий рецепт:", formData);
 
-    onSubmit(formData);
+    addRecipe(formData);
     navigate("/my-recipes");
   };
 

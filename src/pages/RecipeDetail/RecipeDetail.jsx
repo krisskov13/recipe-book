@@ -3,14 +3,12 @@ import styles from "./RecipeDetail.module.css";
 import { useEffect } from "react";
 import { useRecipes } from "../../components/context/Recipe";
 
-function RecipeDetail({ recipes, userRecipes }) {
+function RecipeDetail({ recipes: systemRecipes }) {
   const { id } = useParams();
   const navigate = useNavigate();
+  const { recipes: userRecipes, deleteRecipe } = useRecipes();
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
+  const recipes = [...systemRecipes, ...userRecipes];
   const recipe = recipes.find((r) => String(r.id) === id);
 
   if (!recipe) {
@@ -20,9 +18,13 @@ function RecipeDetail({ recipes, userRecipes }) {
   const isUserRecipe = userRecipes.some((r) => r.id === recipe.id);
 
   const onDelete = () => {
-    handleDelete(recipe.id);
+    deleteRecipe(recipe.id);
     navigate("/my-recipes");
   };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div className={styles.detailContainer}>

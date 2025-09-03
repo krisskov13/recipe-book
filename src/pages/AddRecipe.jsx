@@ -1,13 +1,9 @@
 import RecipeForm from "../components/RecipeForm/RecipeForm";
 
-function AddRecipe({ onAddRecipe }) {
-  const handleAddRecipe = (recipeData) => {
-    onAddRecipe(recipeData);
-  };
-
+function AddRecipe() {
   return (
     <div>
-      <RecipeForm onSubmit={handleAddRecipe} />
+      <RecipeForm />
     </div>
   );
 }

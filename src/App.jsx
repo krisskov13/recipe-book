@@ -21,15 +21,9 @@ function App() {
           path="/recipe/:id"
           element={<RecipeDetail recipes={recipesData} />}
         ></Route>
-        <Route
-          path="/my-recipes"
-          element={<MyRecipes recipes={userRecipes} />}
-        ></Route>
+        <Route path="/my-recipes" element={<MyRecipes />}></Route>
         <Route path="/add" element={<AddRecipe />}></Route>
-        <Route
-          path="/edit/:id"
-          element={<EditRecipe recipes={userRecipes} onUpdate={handleUpdate} />}
-        ></Route>
+        <Route path="/edit/:id" element={<EditRecipe />}></Route>
         <Route path="/register" element={<Register />}></Route>
         <Route path="/login" element={<Login />}></Route>
       </Routes>

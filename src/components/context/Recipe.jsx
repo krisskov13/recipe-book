@@ -1,10 +1,4 @@
-import {
-  Children,
-  createContext,
-  useContext,
-  useEffect,
-  useState,
-} from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { useAuth } from "./Auth";
 
 const RecipeContext = createContext();
@@ -33,7 +27,7 @@ function RecipeProvider({ children }) {
     const updated = recipes.map((r) =>
       r.id === updateRecipe.id ? updateRecipe : r
     );
-    setRecipes(updateRecipe);
+    setRecipes(updated);
     saveRecipes(user.id, updated);
   };
 
@@ -41,7 +35,7 @@ function RecipeProvider({ children }) {
     if (!user) return;
     const updated = recipes.filter((r) => r.id !== id);
     setRecipes(updated);
-    saveRecipes(user.id);
+    saveRecipes(user.id, updated);
   };
 
   return (
