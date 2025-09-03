@@ -1,8 +1,9 @@
 import { Link, useNavigate, useParams } from "react-router-dom";
 import styles from "./RecipeDetail.module.css";
 import { useEffect } from "react";
+import { useRecipes } from "../../components/context/Recipe";
 
-function RecipeDetail({ recipes, handleDelete, userRecipes }) {
+function RecipeDetail({ recipes, userRecipes }) {
   const { id } = useParams();
   const navigate = useNavigate();
 
