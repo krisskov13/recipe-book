@@ -9,11 +9,13 @@ function MyRecipes() {
   return (
     <div className={styles.container}>
       {recipes.length > 0 ? (
-        <div className={styles.listRecipes}>
+        <div>
           <h2>Moї рецепти</h2>
-          {recipes.map((recipe) => (
-            <RecipeCard key={recipe.id} recipe={recipe} showActions={true} />
-          ))}
+          <div className={styles.listRecipes}>
+            {recipes.map((recipe) => (
+              <RecipeCard key={recipe.id} recipe={recipe} showActions={true} />
+            ))}
+          </div>
         </div>
       ) : (
         <div className={styles.containerError}>
