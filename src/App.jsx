@@ -1,15 +1,14 @@
-import { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
-import Home from "./pages/Home/Home";
-import AddRecipe from "./pages/AddRecipe";
 import NavBar from "./components/NavBar/NavBar";
+import Home from "./pages/Home/Home";
 import RecipeDetail from "./pages/RecipeDetail/RecipeDetail";
-import recipesData from "./recipes.json";
-import EditRecipe from "./pages/EditRecipe/EditRecipe";
-import Footer from "./components/Footer/Footer";
-import Register from "./pages/Register/Register";
 import MyRecipes from "./pages/MyRecipes/MyRecipes";
+import AddRecipe from "./pages/AddRecipe";
+import EditRecipe from "./pages/EditRecipe/EditRecipe";
+import Register from "./pages/register/Register";
 import Login from "./pages/login/Login";
+import Footer from "./components/Footer/Footer";
+import recipesData from "./recipes.json";
 
 function App() {
   return (
