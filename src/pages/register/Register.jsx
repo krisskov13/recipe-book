@@ -22,6 +22,11 @@ function Register() {
       return;
     }
 
+    if (password.length < 6) {
+      setLocalError("Пароль має містити мінімум 6 символів");
+      return;
+    }
+
     const success = register(username, password);
 
     if (success) {
